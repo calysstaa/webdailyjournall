@@ -67,25 +67,28 @@ include "koneksi.php";
             <h1 class="fw-bold display-4 pb-3">Gallery</h1>
             <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <?php
-                    $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
-                    $result = $conn->query($sql);
-                    $first = true;
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $active = $first ? "active" : "";
-                            echo '
-                            <div class="carousel-item '.$active.'">
-                                <img src="img/'.$row['gambar'].'" class="d-block w-100 rounded">
-                                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                                    <p>'.$row['deskripsi'].'</p>
-                                    <small>Post by: '.$row['user'].'</small>
-                                </div>
-                            </div>';
-                            $first = false;
-                        }
-                    }
-                    ?>
+                  <?php
+                  include "koneksi.php";
+                  $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+                  $result = $conn->query($sql);
+                  $first = true;
+                
+                  if ($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc()) {
+                          $active = $first ? "active" : "";
+                          echo '<div class="carousel-item ' . $active . '">
+                                  <img src="img/' . $row['gambar'] . '" class="d-block w-100" alt="..." style="height: 500px; object-fit: cover;">
+                                  <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                                    <p>' . $row['deskripsi'] . '</p>
+                                    <small>Oleh: ' . $row['user'] . '</small>
+                                  </div>
+                                </div>';
+                          $first = false;
+                      }
+                  } else {
+                      echo '<div class="carousel-item active"><img src="img/default.jpg" class="d-block w-100"><div class="carousel-caption"><h5>Belum ada data gallery</h5></div></div>';
+                  }
+                  ?>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>

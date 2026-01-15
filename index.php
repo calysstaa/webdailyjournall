@@ -22,12 +22,12 @@ include "koneksi.php";
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navContent">
+            <<div class="collapse navbar-collapse" id="navContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#article">Article</a></li>
                     <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-danger text-white ms-lg-3" href="login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-danger text-black ms-lg-2 px-3" href="login.php">Login</a></li>
                 </ul>
             </div>
         </div>

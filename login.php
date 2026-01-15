@@ -4,10 +4,13 @@ include 'koneksi.php';
 
 if (isset($_POST['login'])) {
     $username = $_POST['user'];
-    $password = md5($_POST['pass']);
+    $password = md5($_POST['pass']); 
 
-    $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-    $result = $conn->query($query);
+    $query = "SELECT * FROM user WHERE username=? AND password=?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $_SESSION['username'] = $username;

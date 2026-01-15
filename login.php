@@ -2,7 +2,6 @@
 session_start();
 include 'koneksi.php';
 
-// Jika sudah login, langsung lempar ke admin
 if (isset($_SESSION['username'])) {
     header("location:admin.php");
     exit;
